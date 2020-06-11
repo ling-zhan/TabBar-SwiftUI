@@ -16,7 +16,7 @@
 在 Xcode 中:
   - 到 **File > Swift Packages > Add Package Dependency**
   - 然後貼上 github 網址：https://github.com/ling-zhan/TabBar-SwiftUI
-  - 接下來按 **Next > Branch: master > Next**
+  - 接下來按 **Next > Branch: master > Next > Finish**
   - 成功的把套件匯進你的專案了
    
  ### 如何使用
@@ -34,18 +34,19 @@
 ### 例子
 ```sh
 import SwiftUI
+import TabBar_SwiftUI
 
 // 自製圖片用法
-// let tabBarItems: [TabBarItem] = [
-//  .init(icon: "music1_gray", selectedIcon: "music1_red"),
-//  .init(icon: "music2_gray", selectedIcon: "music2_red"),
-//  .init(icon: "music3_gray", selectedIcon: "music3_red")]
+ let tabBarItems: [TabBarItem] = [
+    .init(icon: "music1_gray", selectedIcon: "music1_red"),
+    .init(icon: "music2_gray", selectedIcon: "music2_red"),
+    .init(icon: "music3_gray", selectedIcon: "music3_red")]
 
 // SF Symbols 用法
 let tabBarSystemItems: [TabBarItem] = [
-.init(icon: "tag.circle", selectedIcon: "tag.circle.fill", width: 35, height: 35, color: .gray, selectedWidth: 38, selectedHeight: 38, selectedColor: .red),
-.init(icon: "mic.circle", selectedIcon: "mic.circle.fill", width: 35, height: 35, color: .gray, selectedWidth: 38, selectedHeight: 38, selectedColor: .red),
-.init(icon: "message.circle", selectedIcon: "message.circle.fill", width: 35, height: 35, color: .gray, selectedWidth: 38, selectedHeight: 38, selectedColor: .red)
+    .init(icon: "tag.circle", selectedIcon: "tag.circle.fill", width: 35, height: 35, color: .gray, selectedWidth: 38, selectedHeight: 38, selectedColor: .red),
+    .init(icon: "mic.circle", selectedIcon: "mic.circle.fill", width: 35, height: 35, color: .gray, selectedWidth: 38, selectedHeight: 38, selectedColor: .red),
+    .init(icon: "message.circle", selectedIcon: "message.circle.fill", width: 35, height: 35, color: .gray, selectedWidth: 38, selectedHeight: 38, selectedColor: .red)
 ]
 
 struct ContentView: View {
@@ -56,6 +57,7 @@ struct ContentView: View {
                 View1()
                     .frame(minHeight: 0,maxHeight: .infinity)
                     .background(Color.yellow.edgesIgnoringSafeArea(.top))
+                
             }else if selectedTag == 1 {
                 View2()
                     .frame(minHeight: 0,maxHeight: .infinity)
@@ -73,9 +75,9 @@ struct ContentView: View {
                 .frame(minHeight: 0,maxHeight: .infinity)
                 .background(Color.blue.edgesIgnoringSafeArea(.top))
             }
-
+            
             VStack(spacing: 0) {
-                BottomTabBarView(selectedIndex: $selectedTag, items: tabBarSystemItems, iconType: .system, height: 49)
+                TabBarView(selectedIndex: $selectedTag, items: tabBarSystemItems, iconType: .system, iconAlignment: .bottom, height: 49)
                     .animation(.easeIn)
                     .background(Color.clear)
             }
@@ -85,9 +87,8 @@ struct ContentView: View {
     }
 }
 ```
+完整範例檔 [TabBar-SwiftUI-Demo](https://github.com/ling-zhan/TabBar-SwiftUI-Demo) 
 
-授權
-----
-
+ ### 授權
 MIT
 
