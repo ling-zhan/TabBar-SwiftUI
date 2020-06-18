@@ -36,13 +36,25 @@
 import SwiftUI
 import TabBar_SwiftUI
 
-// 自製圖片用法
- let tabBarItems: [TabBarItem] = [
+// 自製圖片 預設
+let tabBarItems: [TabBarItem] = [
     .init(icon: "music1_gray", selectedIcon: "music1_red"),
     .init(icon: "music2_gray", selectedIcon: "music2_red"),
     .init(icon: "music3_gray", selectedIcon: "music3_red")]
 
-// SF Symbols 用法
+// 自製圖片 指定大小與顏色
+// let tabBarItems: [TabBarItem] = [
+//    .init(icon: "music1_gray", selectedIcon: "music1_red",width: 35, height: 35, color: .gray, selectedWidth: 38, selectedHeight: 38, selectedColor: .red),
+//    .init(icon: "music2_gray", selectedIcon: "music2_red", width: 35, height: 35, color: .gray, selectedWidth: 38, selectedHeight: 38, selectedColor: .red),
+//    .init(icon: "music3_gray", selectedIcon: "music3_red",width: 35, height: 35, color: .gray, selectedWidth: 38, selectedHeight: 38, selectedColor: .red)]
+
+// SF Symbols 預設
+// let tabBarSystemItems: [TabBarItem] = [
+//    .init(icon: "tag.circle", selectedIcon: "tag.circle.fill"),
+//    .init(icon: "mic.circle", selectedIcon: "mic.circle.fill"),
+//    .init(icon: "message.circle", selectedIcon: "message.circle.fill")]
+
+// SF Symbols 指定大小與顏色
 let tabBarSystemItems: [TabBarItem] = [
     .init(icon: "tag.circle", selectedIcon: "tag.circle.fill", width: 35, height: 35, color: .gray, selectedWidth: 38, selectedHeight: 38, selectedColor: .red),
     .init(icon: "mic.circle", selectedIcon: "mic.circle.fill", width: 35, height: 35, color: .gray, selectedWidth: 38, selectedHeight: 38, selectedColor: .red),
