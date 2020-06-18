@@ -17,29 +17,88 @@ public struct TabBarItemView: View {
         VStack {
             if selectedTag == tag {
                 if iconType == .system {
-                    Image(systemName: item.selectedIcon)
-                        .resizable()
-                        .modifier(ImageStyleModifier(width: item.selectedWidth, height: item.selectedHeight, color: item.selectedColor))
+                    if item.selectedWidth != nil && item.selectedHeight != nil {
+                        Image(systemName: item.selectedIcon)
+                            .resizable()
+                            .modifier(ImageSizeModifier(width: item.selectedWidth, height: item.selectedHeight))
+                            .modifier(ImageColorModifier(color: item.selectedColor))
+                    }else {
+                        Image(systemName: item.selectedIcon)
+                            .modifier(ImageColorModifier(color: item.selectedColor))
+                    }
                 }else {
-                    Image(item.selectedIcon)
+                    if item.selectedWidth != nil && item.selectedHeight != nil {
+                        if item.selectedColor != nil {
+                            Image(item.selectedIcon)
+                                .resizable()
+                                .renderingMode(.template)
+                                .modifier(ImageSizeModifier(width: item.selectedWidth, height: item.selectedHeight))
+                                .modifier(ImageColorModifier(color: item.selectedColor))
+                            
+                        }else {
+                            Image(item.selectedIcon)
+                                .resizable()
+                                .modifier(ImageSizeModifier(width: item.selectedWidth, height: item.selectedHeight))
+                        }
+                    }else {
+                        if item.selectedColor != nil {
+                            Image(item.selectedIcon)
+                                .renderingMode(.template)
+                                .modifier(ImageColorModifier(color: item.selectedColor))
+                        }else {
+                            Image(item.selectedIcon)
+                        }
+                    }
                 }
             } else {
                 if iconType == .system {
-                    Image(systemName: item.icon)
-                        .resizable()
-                        .modifier(ImageStyleModifier(width: item.width, height: item.height, color: item.color))
+                    if item.width != nil && item.height != nil {
+                        Image(systemName: item.icon)
+                            .resizable()
+                            .modifier(ImageSizeModifier(width: item.width, height: item.height))
+                            .modifier(ImageColorModifier(color: item.color))
+                    }else {
+                        Image(systemName: item.icon)
+                            .modifier(ImageColorModifier(color: item.color))
+                    }
                 }else {
-                    Image(item.icon)
+                    if item.width != nil && item.height != nil {
+                        if item.color != nil {
+                            Image(item.icon)
+                                .resizable()
+                                .renderingMode(.template)
+                                .modifier(ImageSizeModifier(width: item.width, height: item.height))
+                                .modifier(ImageColorModifier(color: item.color))
+                            
+                        }else {
+                            Image(item.icon)
+                                .resizable()
+                                .modifier(ImageSizeModifier(width: item.width, height: item.height))
+                        }
+                    }else {
+                        if item.color != nil {
+                            Image(item.icon)
+                                .renderingMode(.template)
+                                .modifier(ImageColorModifier(color: item.color))
+                        }else {
+                            Image(item.icon)
+                        }
+                    }
                 }
             }
         }
     }
-    private struct ImageStyleModifier: ViewModifier {
+    private struct ImageSizeModifier: ViewModifier {
         let width, height: CGFloat?
-        let color: Color?
         func body(content: Content) -> some View {
             return content
                 .frame(width: width, height: height, alignment: .center)
+        }
+    }
+    private struct ImageColorModifier: ViewModifier {
+        let color: Color?
+        func body(content: Content) -> some View {
+            return content
                 .foregroundColor(color)
         }
     }
