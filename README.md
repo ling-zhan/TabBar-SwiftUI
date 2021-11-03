@@ -15,7 +15,7 @@
 ### 安裝
 在 Xcode 中:
   - 到 **File > Add Packages...**
-  - 然後貼上 github 網址：https://github.com/ling-zhan/ExpandableContainer
+  - 然後貼上 github 網址：https://github.com/ling-zhan/TabBar-SwiftUI
   - 接下來按 **Add Package** 就完成了
    
  ### 如何使用
